@@ -1,0 +1,120 @@
+<!--
+  Generated template for the Dashboard page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+  <ion-navbar color="primary">
+  <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Dashboard</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+<p align="center">Selamat Datang Di Dompet <i><b>{{user.nama}}</b></i></p>
+  <ion-card>
+    <ion-card-content>
+      <table width="100%">
+        <tr>
+          <td width="40%">Pendapatan</td>
+          <td width="10%">:</td>
+          <td align="right" width="50%">{{pendapatan}}</td>
+        </tr>
+        <tr>
+          <td width="40%">Pengeluaran</td>
+          <td width="10%">:</td>
+          <td align="right" width="50%">{{this.pengeluaran}}</td>
+        </tr>
+        <tr>
+          <td width="40%">Selisih </td>
+          <td width="10%">:</td>
+          <td align="right" width="50%">{{this.selisih}}</td>
+        </tr>
+      </table>
+    </ion-card-content>
+  </ion-card>
+  <br/>
+  <br/>
+  <ion-card>
+    <ion-card-content>
+      <ion-segment [(ngModel)]="kategori">
+        <ion-segment-button value="masuk">
+          Uang Masuk
+        </ion-segment-button>
+        <ion-segment-button value="keluar">
+          Uang Keluar
+        </ion-segment-button>
+      </ion-segment>
+      <div [ngSwitch]="kategori">
+        <ion-list *ngSwitchCase="'masuk'">
+           <ion-list>
+              <ion-item-sliding *ngFor="let m of masuk" style="border-bottom: 1px solid gray">
+                <ion-item ion-item>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col col-6>
+                        <b>Rp. {{m.nominal}}</b>
+                      </ion-col>
+                      <ion-col col-6>
+                        <p align="right">{{m.kategori}}</p>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col col-6>
+                        Tgl. {{m.tanggal}}
+                      </ion-col>
+                      <ion-col col-6>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
+                <ion-item-options side="left" >
+                  <button ion-button color="danger"  (click)="hapus('uang_masuk',m.id)">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete
+                  </button>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-list>
+        </ion-list>
+        <ion-list *ngSwitchCase="'keluar'">
+          <ion-list>
+              <ion-item-sliding *ngFor="let m of keluar" style="border-bottom: 1px solid gray">
+                <ion-item ion-item>
+                  <ion-grid>
+                    <ion-row>
+                      <ion-col col-6>
+                        <b>Rp. {{m.nominal}}</b>
+                      </ion-col>
+                      <ion-col col-6>
+                        <p align="right">{{m.kategori}}</p>
+                      </ion-col>
+                    </ion-row>
+                    <ion-row>
+                      <ion-col col-6>
+                        Tgl. {{m.tanggal}}
+                      </ion-col>
+                      <ion-col col-6>
+                      </ion-col>
+                    </ion-row>
+                  </ion-grid>
+                </ion-item>
+                <ion-item-options side="left" >
+                  <button ion-button color="danger" (click)="hapus('uang_keluar',m.id)">
+                    <ion-icon name="trash"></ion-icon>
+                    Delete
+                  </button>
+                </ion-item-options>
+              </ion-item-sliding>
+            </ion-list>
+        </ion-list>
+      </div>
+    </ion-card-content>
+  </ion-card>  
+  <ion-fab right bottom>
+    <button ion-fab color="blue" (click)="tbhUang()"><ion-icon name="add"></ion-icon></button>
+  </ion-fab>
+</ion-content>

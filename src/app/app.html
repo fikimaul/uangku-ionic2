@@ -1,0 +1,22 @@
+<ion-menu [content]="content" id="slide">
+
+  <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>UANGKU</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-list>
+      <button ion-item *ngFor="let p of pages" (click)="openPage(p)">
+        <ion-icon name={{p.icon}}></ion-icon> &nbsp;&nbsp;{{p.title}}
+      </button>
+       <button ion-item (click)="logout()">
+        <ion-icon name='md-stats'></ion-icon> &nbsp;&nbsp;Logout
+      </button>
+    </ion-list>
+  </ion-content>
+
+</ion-menu>
+
+<ion-nav [root]="rootPage" #content swipeBackEnabled="false"></ion-nav>

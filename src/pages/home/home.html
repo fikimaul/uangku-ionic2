@@ -1,0 +1,36 @@
+<ion-header >
+<ion-navbar color="primary">
+    <ion-title>
+      UANGKU
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="card-background-page">
+
+  <ion-card>
+    <img src="assets/gambar/receh.jpg"/>
+    <div class="card-title">UANGKU</div>
+    <div class="card-subtitle">silahakan masuk</div>
+	
+  </ion-card>
+  
+  	<ion-list>
+
+  <ion-item>
+    <ion-label floating>Username</ion-label>
+    <ion-input #username type="text" value=""></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label floating>Password</ion-label>
+    <ion-input #password  type="password" value=""></ion-input>
+  </ion-item>
+
+  <div align="center" padding>
+  <button ion-button block  (click)="login(username.value,password.value)" align="center">Masuk</button>
+</div>
+</ion-list>
+	<h6 align="center">Belum Punya Akun ? <a href="#" (click)="daftar()"><i>Klik Di Sini</i></a></h6>
+
+</ion-content>

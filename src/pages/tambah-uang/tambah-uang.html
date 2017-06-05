@@ -1,0 +1,95 @@
+<ion-header>
+
+  <ion-navbar color="primary">
+    <ion-title>Tambah Uang</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <h5 align="center">Tambah Uang</h5>
+   <ion-segment [(ngModel)]="kategori">
+      <ion-segment-button value="masuk">
+        Uang Masuk
+      </ion-segment-button>
+      <ion-segment-button value="keluar">
+        Uang Keluar
+      </ion-segment-button>
+</ion-segment>
+<div [ngSwitch]="kategori">
+    <ion-list *ngSwitchCase="'masuk'">
+      <form >
+        <input type="hidden"  #id value="{{user.id}}">
+          <input type="hidden"  #tabel value="uang_masuk">
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary" floating>Rp. </ion-label>
+            <ion-input type="number" #nominal></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary" floating>Keterangan </ion-label>
+            <ion-input type="text" #keterangan></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary" floating>Kategori</ion-label>
+            <ion-select #jenis>
+              <ion-option value="Gaji">Gaji</ion-option>
+              <ion-option value="Laba">Laba</ion-option>
+              <ion-option value="Bonus">Bonus</ion-option>
+              <ion-option value="Lain-lain">Lain-lain</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary" floating>Tanggal</ion-label>
+              <ion-datetime displayFormat="DD-MMM-YY" pickerFormat="DD-MMMM-YYYY" #tanggal></ion-datetime>
+            </ion-item>
+          <ion-item>
+            <ion-label  color="primary" floating>Jam</ion-label>
+              <ion-datetime displayFormat="HH:mm:ss" pickerFormat="HH:mm:ss" #jam></ion-datetime>
+            </ion-item>
+            
+        </ion-list>
+        <button ion-button round block (click)="tambah(id.value,tabel.value,nominal.value,keterangan.value,jenis.value,tanggal.value,jam.value)">Tambah</button>
+      </form>
+    </ion-list>
+
+
+    <ion-list *ngSwitchCase="'keluar'">
+      <form >
+        <input type="hidden"  #id value="{{user.id}}">
+          <input type="hidden"  #tabel value="uang_keluar">
+        <ion-list>
+          <ion-item>
+            <ion-label color="primary" floating>Rp. </ion-label>
+            <ion-input type="number" #nominal></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary" floating>Keterangan </ion-label>
+            <ion-input type="text" #keterangan></ion-input>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary" floating>Kategori</ion-label>
+            <ion-select #jenis>
+              <ion-option value="Konsumsi">Konsumsi</ion-option>
+              <ion-option value="Kesehatan">Kesehatan</ion-option>
+              <ion-option value="Transportasi">Transportasi</ion-option>
+              <ion-option value="Lain-lain">Lain-lain</ion-option>
+            </ion-select>
+          </ion-item>
+          <ion-item>
+            <ion-label color="primary" floating>Tanggal</ion-label>
+              <ion-datetime displayFormat="YYYY-MM-DD" pickerFormat="DD-MMMM-YYYY" #tanggal></ion-datetime>
+            </ion-item>
+          <ion-item>
+            <ion-label  color="primary" floating>Jam</ion-label>
+              <ion-datetime displayFormat="HH:mm:ss" pickerFormat="HH:mm:ss" #jam></ion-datetime>
+            </ion-item>
+            
+        </ion-list>
+        <button ion-button round block (click)="tambah(id.value,tabel.value,nominal.value,keterangan.value,jenis.value,tanggal.value,jam.value)">Tambah</button>
+      </form>
+    </ion-list>
+
+</div>
+</ion-content>
