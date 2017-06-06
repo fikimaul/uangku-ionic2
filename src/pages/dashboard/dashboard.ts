@@ -115,6 +115,7 @@ export class Dashboard {
               this.loader.dismiss();
               this.ambil();
               this.ambilTotal();
+              this.ASelisih();
           }    
         },
         err => {
